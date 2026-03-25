@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slack API Dummy Host (GitHub Pages)</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Slack API Dummy Host</h1>
+    <p>
+      Static, GitHub Pages-friendly Slack API simulator with dummy responses.
+      Includes an interactive explorer with prefilled parameters and one-click execution.
+    </p>
+  </header>
+
+  <section class="panel">
+    <h2>How this works on GitHub Pages</h2>
+    <ul>
+      <li>No Python server required: this project is 100% HTML/CSS/JavaScript.</li>
+      <li>API calls are simulated in-browser via a deterministic mock router.</li>
+      <li>You can call the simulator programmatically using <code>window.slackMockApi.handleRequest(...)</code>.</li>
+    </ul>
+    <details>
+      <summary>Programmatic usage example</summary>
+      <pre><code>const result = await window.slackMockApi.handleRequest({
+  method: 'POST',
+  path: '/api/slack/chat/postMessage',
+  params: { channel: 'C123', text: 'hello' }
+});
+console.log(result);</code></pre>
+    </details>
+  </section>
+
+  <section class="panel">
+    <h2>API Explorer (Swagger-like)</h2>
+    <p>Edit JSON payload/query values and execute each API with defaults prefilled.</p>
+    <div id="api-grid" class="grid"></div>
+  </section>
+
+  <section class="panel">
+    <h2>Catch-all API Tester</h2>
+    <p>Test any Slack-style method path not explicitly listed below.</p>
+    <div class="inline-form">
+      <label>Method
+        <select id="generic-http-method">
+          <option>GET</option>
+          <option selected>POST</option>
+        </select>
+      </label>
+      <label>Path
+        <input id="generic-path" value="/api/slack/apps.event.authorizations.list" />
+      </label>
+    </div>
+    <label>Params (JSON)</label>
+    <textarea id="generic-body">{
+  "event_context": "EC123"
+}</textarea>
+    <button id="generic-run">Execute generic API</button>
+    <pre id="generic-output">(response appears here)</pre>
+  </section>
+
+  <footer>
+    <a href="openapi.json" target="_blank" rel="noreferrer">Open static OpenAPI JSON</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Slack API Dummy Host (Static)",
+    "version": "2.0.0",
+    "description": "Static GitHub Pages mock Slack API simulator."
+  },
+  "paths": {
+    "/api/slack/auth/test": { "get": { "summary": "auth.test" } },
+    "/api/slack/users/info": { "post": { "summary": "users.info" } },
+    "/api/slack/conversations/list": { "get": { "summary": "conversations.list" } },
+    "/api/slack/conversations/history": { "post": { "summary": "conversations.history" } },
+    "/api/slack/conversations/replies": { "post": { "summary": "conversations.replies" } },
+    "/api/slack/chat/postMessage": { "post": { "summary": "chat.postMessage" } },
+    "/api/slack/search/messages": { "post": { "summary": "search.messages" } },
+    "/api/slack/files/list": { "get": { "summary": "files.list" } },
+    "/api/slack/messages/summarize": { "post": { "summary": "messages.summarize" } },
+    "/api/slack/{method_path}": { "get": { "summary": "generic" }, "post": { "summary": "generic" } }
+  }
+}
